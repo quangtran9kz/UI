@@ -1,23 +1,20 @@
-import React from "react";
-import PropTypes from 'prop-types';
-class Test extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          message: 'Quang đẹp trai nhất thế giới!!!',
-          isShow:true
-        };
-      }
-    toggle(){
-          this.setState({isShow:!this.state.isShow});
-      }
-    render(){
-        return(
-        <div>
-            <p>{this.state.isShow?this.state.message:''}</p>
-            <button onClick={()=>this.toggle()}>Show/Hide message</button>
-        </div>
+import React, { Component } from "react";
+import Home from './Home';
+import About from './About';
+import LoginComponent from './LoginComponent';
+import { Switch,Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import {actAddNote} from '../actions/index';
+const test = () => {
+    return (
+       <>
+            <Switch>
+                <Route path="/home" component={Home} />
+                <Route path="/about" component={About} />
+                <Route path="/login" component={LoginComponent} />
+            </Switch>
+       </>
     );
-    }
 }
-export default Test;
+
+export default test;

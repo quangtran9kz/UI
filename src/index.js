@@ -3,12 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Welcome from'./components/welcome';
-import Test from './components/test';
+import LoginComponent from './components/LoginComponent';
+import Test from './components/test'
+import { BrowserRouter} from 'react-router-dom';
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import reducers from "./reducers/index";
+const store = createStore(reducers);
 ReactDOM.render(
-  <div>
-  <Welcome age="18" name="TNVQ" gender="nam">quangtran9kz</Welcome>
-  <Test number1={1} number2={3}></Test>
-  </div>,
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Test/>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
